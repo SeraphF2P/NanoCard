@@ -33,9 +33,6 @@ export const MyPlugin = plugin(
 				},
 			},
 			extend: {
-				fontFamily: {
-					sans: ["var(--font-sans)", ...fontFamily.sans],
-				},
 				screens: {
 					mid: "810px",
 				},

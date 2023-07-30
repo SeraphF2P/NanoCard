@@ -8,7 +8,9 @@
 .form-error {
 	@apply pointer-events-none absolute bottom-2 right-1 text-sm text-red-400;
 }
-
+h1 {
+	@apply text-3xl font-bold capitalize;
+}
 body {
 	scroll-behavior: smooth;
 	-ms-overflow-style: none;

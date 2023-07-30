@@ -1,20 +1,24 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { lazy } from "react";
-const Master = lazy(() => import("./layout/master"));
-const About = lazy(() => import("./pages/about"));
-const Contact = lazy(() => import("./pages/contact"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+import { Suspense, lazy } from "react";
 
 function App() {
+	const Master = lazy(() => import("./layout/master"));
+	const Home = lazy(() => import("./pages/home"));
+	const About = lazy(() => import("./pages/about"));
+	const Contact = lazy(() => import("./pages/contact"));
+	const NotFound = lazy(() => import("./pages/NotFound"));
 	return (
 		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Master />}>
-					<Route path="/about" element={<About />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/*" element={<NotFound />} />
-				</Route>
-			</Routes>
+			<Suspense fallback={<>loading</>}>
+				<Routes>
+					<Route element={<Master />}>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/*" element={<NotFound />} />
+					</Route>
+				</Routes>
+			</Suspense>
 		</BrowserRouter>
 	);
 }
